@@ -21,4 +21,7 @@ export class ApiService {
   deletePolicy( id: number ){
     return this.httpClient.delete<Policy>(`${this.PHP_API_SERVER}/api/delete.php/?id=${id}`);
   }
+  updatePolicy(policy: Policy){
+    return this.httpClient.put<Policy>(`${this.PHP_API_SERVER}/api/update.php`, policy);   
+  }
 }

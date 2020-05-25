@@ -14,7 +14,33 @@ export class DashboardComponent implements OnInit {
   ngOnInit() {
     this.api.readPolicies().subscribe( ( policies : Policy[] ) => {
         this.policies = policies;
-        console.log( this.policies );
+        console.log( 'policies', this.policies );
+    });
+  }
+
+  createOrUpdatePolicy(form){
+    if(this.selectedPolicy && this.selectedPolicy.id){
+      form.value.id = this.selectedPolicy.id;
+      this.api.updatePolicy(form.value).subscribe((policy: Policy)=>{
+        console.log("Policy updated" , policy);
+      });
+    }
+    else{
+
+      this.api.createPolicy(form.value).subscribe((policy: Policy)=>{
+        console.log("Policy created, ", policy);
+      });
+    }
+
+  }
+
+  selectPolicy(policy: Policy){
+    this.selectedPolicy = policy;
+  }
+
+  deletePolicy(id){
+    this.api.deletePolicy(id).subscribe((policy: Policy)=>{
+      console.log("Policy deleted, ", policy);
     });
   }
 
