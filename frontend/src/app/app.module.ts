@@ -6,11 +6,13 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from  '@angular/forms';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { InserReviewComponent } from './pages/admin/inser-review/inser-review.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    DashboardComponent
+    DashboardComponent,
+    InserReviewComponent
   ],
   imports: [
     BrowserModule,
